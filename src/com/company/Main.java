@@ -6,10 +6,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-
-    }
-
-    private List<Client> generateClients() {
         List<Client> clients = new ArrayList<Client>();
         clients.add(new Client(1, "Сысоев Чарльз Иванович", 27));
         clients.add(new Client(2, "Воронцов Цефас Викторович", 45));
@@ -21,10 +17,7 @@ public class Main {
         clients.add(new Client(8, "Молчанов Глеб Викторович", 34));
         clients.add(new Client(9, "Суханов Назар Брониславович", 53));
         clients.add(new Client(10, "Зимин Марк Иванович", 22));
-        return clients;
-    }
 
-    private List<Account> generateAccounts() {
         List<Account> accounts = new ArrayList<Account>();
         accounts.add(new Account(1, "Зимин Марк Иванович", 22000));
         accounts.add(new Account(2, "Молчанов Глеб Викторович", 27000));
@@ -42,6 +35,21 @@ public class Main {
         accounts.add(new Account(14, "Куликов Филипп Брониславович", 876000));
         accounts.add(new Account(15, "Сафонов Гарри Эдуардович", 12000));
         accounts.add(new Account(16, "Зимин Марк Иванович", 49000));
-        return accounts;
+
+        Bank bank = new Bank(accounts, clients);
+
+        System.out.println("Клиенты: ");
+        bank.printClientsMap(bank.getClientsMap());
+        System.out.println();
+
+        System.out.println("Счета: ");
+        bank.printAccountMap(bank.getAccountsMap());
+        System.out.println();
+
+        // Получение счетов по ФИО
+        System.out.println("Получение всех счетов по ФИО: " + bank.getAccounts("Сафонов Гарри Эдуардович"));
+
+        // Получение клиента по id счёт
+        System.out.println("Получение клиента по счёту: " + bank.getClient(11));
     }
 }
