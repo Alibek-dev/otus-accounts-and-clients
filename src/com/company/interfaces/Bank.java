@@ -1,13 +1,17 @@
 package com.company.interfaces;
 
+import com.company.Account;
+import com.company.Client;
+
+import java.util.HashMap;
 import java.util.List;
 
 public interface Bank {
-    public List getClients();
+    Client getClient(Integer clientId);
 
-    public List getAccounts();
+    List<Account> getAccounts(String fullName);
 
-    public void printClients();
+    void printAccountMap(HashMap<Integer, Client> hashMap);
 
-    public void printAccounts();
+    void printClientsMap(HashMap<String, List<Account>> hashMap);
 }

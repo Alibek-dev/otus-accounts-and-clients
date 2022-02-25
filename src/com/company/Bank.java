@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Bank {
+public class Bank implements com.company.interfaces.Bank {
     private final List<Account> accounts;
     private final List<Client> clients;
 
@@ -19,21 +19,21 @@ public class Bank {
         for (Client client : this.clients) {
             ArrayList<Account> tempAccounts = new ArrayList<>();
             for (Account account : this.accounts) {
-                if (account.getFullName().equals(client.getFullName())) {
+                if (account.fullName().equals(client.fullName())) {
                     tempAccounts.add(account);
                 }
             }
-            clientsMap.put(client.getFullName(), tempAccounts);
+            clientsMap.put(client.fullName(), tempAccounts);
         }
 
         for (Account account : this.accounts) {
             Client tempClient = null;
             for (Client client : this.clients) {
-                if (account.getFullName().equals(client.getFullName())) {
+                if (account.fullName().equals(client.fullName())) {
                     tempClient = client;
                 }
             }
-            accountsMap.put(account.getId(), tempClient);
+            accountsMap.put(account.id(), tempClient);
         }
     }
 
